@@ -1,11 +1,15 @@
+function OnRawMessage(conn, nick, msg, channel) {
+	//
+}
+
 function OnMessage(conn, nick, channel, msg, cmd, args) {
-	if(cmd == "say") {
-		if(["!", "/", ';', '`'].includes(args[0])) {
-			//
-		} else {
-			channel.send(args);
-		}
-	}
+//	if(cmd == "say") {
+//			
+//			//
+//		} else {
+//			channel.send(args);
+//		}
+//	}
 	
 	if(cmd == "explode") {
 		channel.send("***Kaboom!***");
@@ -34,3 +38,4 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 }
 
 exports.OnMessage = OnMessage;
+exports.onRawMessage = OnRawMessage;

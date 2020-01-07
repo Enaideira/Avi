@@ -74,7 +74,16 @@ Relay.prototype._handleDiscord = function(m) {
 			content = msg.content,
 			isMe = false;
 		let displayName = msg.author.nickname || msg.author.username;
-		let pretty = "[" + displayName + "] " + content; 
+		let pretty = "[" + displayName + "] " + content;
+		
+		for(let x of self._plugins) {
+			if(self._plugins[x].onRawMessage !== undefined) {
+				self._plugins[x].onRawMessage(m, displayName, msg, channel)
+			}
+		}
+
+
+
 		if(content[0] === "`") {
 			let body = content.slice(1).split(" ");
 			let cmd  = body[0].toLowerCase();
@@ -110,10 +119,12 @@ if (!module.parent) {
 	  .on('unhandledRejection', (reason, p) => {
 	    console.error(reason, 'Unhandled Rejection at Promise', p);
 		fs.appendFile("logs/rejections.log", reason.stack + "\n",  (reason) => { if (reason) throw reason;});
+		conn.channels.get("627761315863068672").send(reason.stack + "\n",  (reason) => { if (reason) throw reason;});
 	  })
 	  .on('uncaughtException', err => {
 		console.log(err),
 		fs.appendFile("logs/exceptions.log", err.stack + "\n",  (err) => { if (err) throw err;});
+		conn.channels.get("627761315863068672").send(err.stack + "\n",  (err) => { if (err) throw err;});
 
 	    //console.error(err, 'Uncaught Exception thrown');
 	    //process.exit(1);

@@ -4,6 +4,10 @@ var
 	bot = require("../bot"),
 	config = require("../config").config;
 
+function OnRawMessage(conn, nick, msg, channel) {
+	//
+}
+	
 function OnMessage(conn, nick, channel, msg, cmd, args) {
 	
 	if(cmd == "modules") {
@@ -66,3 +70,4 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 
 	
 exports.OnMessage = OnMessage;
+exports.onRawMessage = OnRawMessage;

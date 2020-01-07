@@ -4,6 +4,11 @@ var
     search = require("youtube-search"),
 	config = require("../config").config;
 
+function OnRawMessage(conn, nick, msg, channel) {
+	//
+}
+
+
 function OnMessage(conn, nick, channel, msg, cmd, args, opts, err, results) {
 	let self = this
 
@@ -24,3 +29,4 @@ function OnMessage(conn, nick, channel, msg, cmd, args, opts, err, results) {
 }
 
 exports.OnMessage = OnMessage;
+exports.onRawMessage = OnRawMessage;

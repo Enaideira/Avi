@@ -19,18 +19,24 @@ const clean = text => {
         return text
 }
 
-String.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10);
+String.prototype.toDDHHMMSS = function () {
+	var sec_num = parseInt(this, 10);
+	var days    = Math.floor(sec_num / 86400);
     var hours   = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
+	if (days    < 10) {days    = "0"+days;}
     if (hours   < 10) {hours   = "0"+hours;}
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = hours + " hours, " + minutes + " minutes, and " + seconds + " seconds";
+    var time    = days + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds";
     return time;
 }
+
+
+
+
 
 function OnMessage(conn, nick, channel, msg, cmd, args) {
 	
@@ -47,9 +53,9 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 			}
 		}
 		    var p = process.uptime();
-		    var pt = (p + "").toHHMMSS();
+		    var pt = (p + "").toDDHHMMSS();
 			var t = os.uptime();
-		    var u = (t + "").toHHMMSS();
+		    var u = (t + "").toDDHHMMSS();
 		channel.send({embed: {
 			color: 16220659,
 			author: {
@@ -134,6 +140,9 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
       {
         name: "***Twitter***",
         value: "*• You can follow us on Twitter [here](http://twitter.com/TheAviProject)!*"
+      },{
+        name: "***Website***",
+        value: "*• You can find our website [here](https://earthchan.dev/avi)!*"
       },
       {
         name: "***Invite***",
@@ -150,4 +159,12 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 	}
 }
 
+
+
+function OnRawMessage(conn, nick, msg, channel) {
+	//
+}
+
+
 exports.OnMessage = OnMessage;
+exports.onRawMessage = OnRawMessage;
