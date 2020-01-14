@@ -123,7 +123,7 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 		if(msg.author.id !== config.OWNER_ID) {
 			channel.send("You cannot run this command.");
 			return;
-		} .
+		}
 			process.exit();
 }
 
