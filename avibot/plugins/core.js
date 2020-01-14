@@ -119,6 +119,16 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
     }
 	}
 	
+	if(cmd == "rs") {
+		if(msg.author.id !== config.OWNER_ID) {
+			channel.send("You cannot run this command.");
+			return;
+		}
+		try {
+			channel.send("Restarting!");
+			process.exit()
+	}
+
 	if(cmd == "help") {
 		channel.send({embed: {
 			color: 16220659,
