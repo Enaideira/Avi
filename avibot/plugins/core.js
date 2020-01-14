@@ -22,7 +22,7 @@ const clean = text => {
 String.prototype.toDDHHMMSS = function () {
 	var sec_num = parseInt(this, 10);
 	var days    = Math.floor(sec_num / 86400);
-    var hours   = Math.floor(sec_num - (days / 24));
+    var hours   = Math.floor((sec_num - (days * 86400)) / 24);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
