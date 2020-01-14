@@ -124,8 +124,6 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 			channel.send("You cannot run this command.");
 			return;
 		}
-			channel.send("Restarting!");
-			setTimeout(5000);
 			process.exit();
 }
 
