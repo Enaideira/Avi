@@ -126,7 +126,7 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 		}
 		try {
 			channel.send("Restarting!");
-			process.exit()
+			process.exit();
 	}
 
 	if(cmd == "help") {
