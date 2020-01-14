@@ -125,6 +125,7 @@ function OnMessage(conn, nick, channel, msg, cmd, args) {
 			return;
 		}
 			channel.send("Restarting!");
+			setTimeout(5000);
 			process.exit();
 }
 
