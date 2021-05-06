@@ -19,7 +19,7 @@
     "redis": "^2.8.0",
     "resolve": "^1.10.0",
     "sodium": "^2.0.3",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "uws": "^99.0.0",
     "youtube-search": "^1.1.4",
     "ytdl-core": "^0.22.0"
